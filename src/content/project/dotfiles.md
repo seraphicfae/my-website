@@ -5,7 +5,7 @@ pubDate: 'May 23 2025'
 heroImage: '/assets/dotfiles-hero.png'
 ---
 
-please check <u>[Github](https://github.com/seraphicfae/dotfiles)</u> for the latest update
+please check <u>[Github](https://github.com/seraphicfae/hyprland-dotfiles)</u> for the latest update
 
 ## Showcase
 <video controls width="100%" style="max-width: 1080px;">
