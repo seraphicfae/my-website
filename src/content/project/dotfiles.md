@@ -21,7 +21,7 @@ please check <u>[Github](https://github.com/seraphicfae/hyprland-dotfiles)</u> f
 > **Don't run random scripts blindly.**
 
 ```bash
-git clone https://github.com/seraphicfae/dotfiles
+git clone https://github.com/seraphicfae/hyprland-dotfiles
 cd hyprland-dotfiles
 ./setup.sh
 ```
@@ -48,7 +48,7 @@ xdg-desktop-portal-gtk xdg-desktop-portal-hyprland xdg-user-dirs xorg-xwayland z
 
 #### Steps
 ```bash
-cd dotfiles
+cd hyprland-dotfiles
 cp -r .config/* ~/.config/
 mkdir -p ~/.icons ~/.themes
 cp -r .icons/* ~/.icons/
