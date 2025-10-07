@@ -2,7 +2,7 @@
 title: 'Dotfiles'
 description: 'No place like ~'
 pubDate: 'May 23 2025'
-heroImage: '/assets/dotfiles-hero.png'
+heroImage: '/assets/dotfiles-hero.webp'
 ---
 
 please check <u>[Github](https://github.com/seraphicfae/hyprland-dotfiles)</u> for the latest update
