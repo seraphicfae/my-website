@@ -26,10 +26,7 @@ try {
 		`https://manti.vendicated.dev/api/reviewdb/users/${DISCORD_ID}/reviews?flags=2`,
 	);
 	const data = (await response.json()) as ReviewApiResponse;
-	reviews = (data.reviews ?? []).sort(
-		(firstReview, secondReview) =>
-			secondReview.timestamp - firstReview.timestamp,
-	);
+	reviews = data.reviews ?? [];
 } catch (error) {
 	console.error("mantikafasi pls fix:", error);
 	reviews = [];
