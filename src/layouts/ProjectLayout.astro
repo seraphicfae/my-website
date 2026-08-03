@@ -31,7 +31,7 @@ const {
 	<main class="mx-auto max-w-2xl px-6 py-16">
 		<a
 			href="/projects"
-			class="mb-8 inline-block text-sm text-neutral-500 transition-colors hover:text-neutral-800 dark:hover:text-neutral-200"
+			class="mb-8 inline-block text-lg hover:underline"
 			>← Projects</a
 		>
 		{
@@ -46,14 +46,14 @@ const {
 						class="max-h-100 w-full rounded-xl object-cover"
 					/>
 					{heroImageCredit && (
-						<p class="mt-2 text-right text-xs text-neutral-400">
+						<p class="mt-2 text-right text-xs text-muted">
 							image by{" "}
 							{heroImageCreditUrl ? (
 								<a
 									href={heroImageCreditUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="underline transition-colors hover:text-neutral-600 dark:hover:text-neutral-200"
+									class="underline transition-colors hover:text-foreground-hover"
 								>
 									{heroImageCredit}
 								</a>
@@ -71,22 +71,23 @@ const {
 			<FormattedDate date={date} />
 			{
 				github && (
-					<>
 						<Icon name="lucide:dot" />
 						<a
 							href={github}
 							target="_blank"
 							rel="noopener noreferrer"
-							class="inline-flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+							class="text-muted transition-colors inline-flex items-center gap-1.5 text-sm hover:text-foreground"
 						>
-							<Icon name="simple-icons:github" class="size-4" />
+							<Icon
+								name="simple-icons:github"
+								class="size-4 text-muted"
+							/>
 							source
 						</a>
-					</>
 				)
 			}
 		</div>
-		<article class="prose prose-neutral dark:prose-invert max-w-none">
+		<article class="prose prose-neutral prose-invert max-w-none prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover hover:prose-a:underline">
 			<slot />
 		</article>
 	</main>

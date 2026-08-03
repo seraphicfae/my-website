@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 
 <footer class="mt-auto flex justify-center px-6 py-6">
 	<div
-		class="flex items-center gap-6 rounded-full border border-neutral-200/70 bg-white/80 px-6 py-3 text-sm text-neutral-500 shadow-lg backdrop-blur-xl dark:border-neutral-800/70 dark:bg-neutral-950/80 dark:text-neutral-300"
+		class="flex items-center gap-6 rounded-full border border-border/70 bg-background/80 px-6 py-3 text-sm shadow-lg backdrop-blur-xl text-secondary"
 	>
 		<a
 			href="https://www.oracle.com/erp/"
@@ -14,17 +14,17 @@ import { Icon } from "astro-icon/components";
 			class="flex items-center justify-center gap-2"
 		>
 			Psst, you're cute
-			<Icon name="lucide:heart" />
+			<Icon name="lucide:heart" class="text-accent-secondary" />
 		</a>
 
-		<span class="h-3 w-px bg-neutral-300 dark:bg-neutral-700"></span>
+		<span class="h-3 w-px bg-divider"></span>
 
 		<a
 			href="https://github.com/seraphicfae/seraphicfae.dev"
 			target="_blank"
 			rel="noopener noreferrer"
 			aria-label="GitHub"
-			class="transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+			class="transition-colors hover:text-foreground"
 		>
 			<Icon name="simple-icons:github" class="h-4 w-4" />
 		</a>

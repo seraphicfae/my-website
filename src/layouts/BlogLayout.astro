@@ -15,9 +15,7 @@ const { title, description, date, readTime } = Astro.props;
 
 <Layout title={title} description={description}>
 	<main class="mx-auto max-w-2xl px-6 py-16">
-		<a
-			href="/blog"
-			class="mb-8 inline-block text-sm text-neutral-500 transition-colors hover:text-neutral-800 dark:hover:text-neutral-200"
+		<a href="/projects" class="mb-8 inline-block text-lg hover:underline"
 			>← Blog</a
 		>
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
@@ -25,11 +23,13 @@ const { title, description, date, readTime } = Astro.props;
 		<div class="mb-10 flex items-center gap-2">
 			<FormattedDate date={date} />
 			<div class="flex items-center gap-1.5">
-				<Icon name="lucide:clock" class="size-3.5 shrink-0 text-neutral-400" />
-				<span class="text-sm text-neutral-400">{readTime}</span>
+				<Icon name="lucide:clock" class="text-muted size-3.5 shrink-0" />
+				<span class="text-muted text-sm">{readTime}</span>
 			</div>
 		</div>
-		<article class="prose prose-neutral dark:prose-invert max-w-none">
+		<article
+			class="prose prose-neutral prose-invert prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover hover:prose-a:underline max-w-none"
+		>
 			<slot />
 		</article>
 	</main>

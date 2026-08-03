@@ -7,8 +7,14 @@ const { date } = Astro.props;
 ---
 
 <div class="flex items-center gap-1.5">
-	<Icon name="lucide:calendar" class="size-3.5 shrink-0 text-neutral-400" />
-	<time class="text-sm text-neutral-400" datetime={date.toISOString()}>
+	<Icon
+		name="lucide:calendar"
+		class="size-3.5 shrink-0 text-muted"
+	/>
+	<time
+		class="text-sm text-muted"
+		datetime={date.toISOString()}
+	>
 		{
 			date.toLocaleDateString("en-us", {
 				year: "numeric",

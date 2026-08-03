@@ -42,9 +42,7 @@ const socialImage = new URL(image, Astro.site);
 		<meta name="theme-color" content="#FF00FF" />
 		<ClientRouter />
 	</head>
-	<body
-		class="flex min-h-screen flex-col bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100"
-	>
+	<body class="flex min-h-screen flex-col bg-background text-foreground">
 		<Header />
 		<main class="flex-1">
 			<slot />

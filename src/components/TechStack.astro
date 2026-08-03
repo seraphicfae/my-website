@@ -16,11 +16,11 @@ import { Icon } from "astro-icon/components";
 					target="_blank"
 					rel="noopener noreferrer"
 					style={`--brand: ${item.color}`}
-					class="group flex items-center gap-2 rounded-lg border border-neutral-200 px-3 py-1.5 transition-all duration-200 hover:border-transparent hover:bg-(--brand) dark:border-neutral-800"
+					class="group flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 transition-all duration-200 hover:border-transparent hover:bg-(--brand)"
 				>
 					<Icon
 						name={item.icon}
-						class="size-4 text-neutral-500 transition-colors duration-200 group-hover:text-white dark:text-neutral-400"
+						class="size-4 text-muted transition-colors duration-200 group-hover:text-white"
 					/>
 					<span class="transition-colors duration-200 group-hover:text-white">
 						{item.name}

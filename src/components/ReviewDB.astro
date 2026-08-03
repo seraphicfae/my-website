@@ -42,7 +42,7 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 	</div>
 	{
 		reviews.length === 0 ? (
-			<p class="text-sm text-neutral-500 dark:text-neutral-400">
+			<p class="text-sm text-muted">
 				Nothing to see here
 			</p>
 		) : (
@@ -70,19 +70,19 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 									/>
 									<div class="min-w-0 flex-1">
 										<div class="flex items-baseline gap-2">
-											<h class="text-xs font-medium text-neutral-600 dark:text-neutral-300">
+											<h class="text-xs font-medium text-secondary">
 												{review.sender.username}
 											</h>
-											<span class="text-xs text-neutral-500 dark:text-neutral-400">
+											<span class="text-xs text-muted">
 												{new Date(review.timestamp * 1000).toLocaleDateString()}
 											</span>
 										</div>
-										<p class="text-sm wrap-break-word text-neutral-500 dark:text-neutral-400">
+										<p class="text-sm font-bold wrap-break-word">
 											{review.comment}
 										</p>
 									</div>
 									{review.score != null && (
-										<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-neutral-400 dark:text-neutral-500">
+										<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-subtle">
 											<Icon name="lucide:chevron-up" class="size-3.5" />
 											<span class="text-xs font-medium">{review.score}</span>
 											<Icon name="lucide:chevron-down" class="size-3.5" />
@@ -99,20 +99,20 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 							id="reviewdb-previous-button"
 							type="button"
 							disabled
-							class="cursor-pointer text-xs font-medium text-neutral-500 hover:text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40 dark:text-neutral-400 dark:hover:text-neutral-200"
+							class="cursor-pointer text-xs font-medium text-muted hover:text-foreground-hover disabled:cursor-not-allowed disabled:opacity-40"
 						>
 							Previous
 						</button>
 						<span
 							id="reviewdb-page-indicator"
-							class="text-xs text-neutral-500 dark:text-neutral-400"
+							class="text-xs text-muted"
 						>
 							Page 1 of {totalPageCount}
 						</span>
 						<button
 							id="reviewdb-next-button"
 							type="button"
-							class="cursor-pointer text-xs font-medium text-neutral-500 hover:text-neutral-700 disabled:cursor-not-allowed disabled:opacity-40 dark:text-neutral-400 dark:hover:text-neutral-200"
+							class="cursor-pointer text-xs font-medium text-muted hover:text-foreground-hover disabled:cursor-not-allowed disabled:opacity-40"
 						>
 							Next
 						</button>

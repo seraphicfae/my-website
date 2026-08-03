@@ -12,14 +12,14 @@ const { title, description, date } = post.data;
 
 <a
 	href={`/blog/${post.id}`}
-	class="group block overflow-hidden rounded-xl border border-neutral-200 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
+	class="group block overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-border-hover"
 >
 	<div class="p-5">
 		<div class="mb-2 flex items-center justify-between">
 			<h2 class="text-lg font-medium">{title}</h2>
 			<FormattedDate date={date} />
 		</div>
-		<p class="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+		<p class="mb-4 text-sm">
 			{description}
 		</p>
 	</div>

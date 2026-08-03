@@ -12,7 +12,7 @@ const { title, description, date, heroImage, heroImageCredit } = project.data;
 ---
 
 <div
-	class="group block overflow-hidden rounded-xl border border-neutral-200 transition-colors hover:border-neutral-400 dark:border-neutral-800 dark:hover:border-neutral-600"
+	class="group block overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-border-hover"
 >
 	<a href={`/projects/${project.id}`}>
 		{
@@ -26,7 +26,7 @@ const { title, description, date, heroImage, heroImageCredit } = project.data;
 						class="h-48 w-full object-cover"
 					/>
 					{heroImageCredit && (
-						<span class="absolute right-2 bottom-1.5 rounded-xl p-0.5 text-xs backdrop-brightness-50">
+						<span class="absolute right-2 bottom-1.5 rounded-xl p-0.5 text-xs text-white backdrop-brightness-50">
 							© {heroImageCredit}
 						</span>
 					)}
@@ -38,7 +38,7 @@ const { title, description, date, heroImage, heroImageCredit } = project.data;
 				<h2 class="text-lg font-medium">{title}</h2>
 				<FormattedDate date={date} />
 			</div>
-			<p class="mb-4 text-sm text-neutral-500 dark:text-neutral-400">
+			<p class="mb-4 text-sm">
 				{description}
 			</p>
 		</div>

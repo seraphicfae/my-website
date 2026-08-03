@@ -11,17 +11,37 @@
 
 @plugin "@tailwindcss/typography";
 
-@theme {
-	--font-sans: "Inter Variable", Inter, system-ui, sans-serif;
-	--text-sm: 1rem;
-	--text-xs: 0.8rem;
-	--text-base: 1.125rem;
-}
-
 @layer base {
 	html {
 		font-family: var(--font-sans);
 		font-feature-settings: "cv11", "ss01";
 		font-size: 18px;
+		color-scheme: dark;
 	}
+}
+
+@theme {
+	--font-sans: "Inter Variable", Inter, system-ui, sans-serif;
+	--text-sm: 1rem;
+	--text-xs: 0.8rem;
+	--text-base: 1.125rem;
+	--color-background: oklch(6% 0.025 320);
+
+	--color-surface: oklch(10.5% 0.03 320);
+	--color-surface-hover: oklch(15% 0.035 320);
+
+	--color-border: oklch(22% 0.03 320);
+	--color-border-hover: oklch(34% 0.04 320);
+	--color-divider: oklch(27% 0.03 320);
+
+	--color-foreground: oklch(96% 0.008 320);
+	--color-foreground-hover: oklch(99% 0.003 320);
+
+	--color-secondary: oklch(77% 0.085 300);
+	--color-muted: oklch(67% 0.03 320);
+	--color-subtle: oklch(54% 0.025 320);
+
+	--color-accent: oklch(74% 0.31 350);
+	--color-accent-hover: oklch(81% 0.27 350);
+	--color-accent-secondary: oklch(71% 0.2 295);
 }
