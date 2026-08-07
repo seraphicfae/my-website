@@ -12,7 +12,7 @@ const { title, description, date, heroImage, heroImageCredit } = project.data;
 ---
 
 <div
-	class="group block overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-border-hover"
+	class="group border-border bg-surface hover:border-border-hover block overflow-hidden rounded-xl border transition-colors"
 >
 	<a href={`/projects/${project.id}`}>
 		{
@@ -23,7 +23,7 @@ const { title, description, date, heroImage, heroImageCredit } = project.data;
 						alt={title}
 						loading="eager"
 						width={600}
-						class="h-48 w-full object-cover"
+						class="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
 					/>
 					{heroImageCredit && (
 						<span class="absolute right-2 bottom-1.5 rounded-xl p-0.5 text-xs text-white backdrop-brightness-50">

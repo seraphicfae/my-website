@@ -26,10 +26,10 @@ import { Image } from "astro:assets";
 						height={180}
 						loading="eager"
 						decoding="async"
-						class="h-10 w-10 rounded-lg object-cover ring-2 ring-transparent transition-all group-hover:ring-(--color)"
+						class="h-12 w-12 rounded-lg object-cover ring-2 ring-transparent transition-all group-hover:ring-(--color)"
 						style={{ "--color": friend.color }}
 					/>
-					<span class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 rounded bg-surface px-2 py-1 text-xs font-bold whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
+					<span class="bg-surface pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 rounded px-2 py-1 text-xs font-bold whitespace-nowrap opacity-0 transition-opacity group-hover:opacity-100">
 						{friend.name}
 					</span>
 				</a>

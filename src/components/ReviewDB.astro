@@ -42,9 +42,7 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 	</div>
 	{
 		reviews.length === 0 ? (
-			<p class="text-sm text-muted">
-				Nothing to see here
-			</p>
+			<p class="text-muted text-sm">Nothing to see here</p>
 		) : (
 			<div class="flex flex-col gap-3">
 				{Array.from({ length: totalPageCount }).map((_, pageIndex) => (
@@ -66,23 +64,21 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 										height={40}
 										loading="eager"
 										decoding="async"
-										class="h-11 w-11 shrink-0 rounded-lg object-cover"
+										class="h-12 w-12 shrink-0 rounded-lg object-cover"
 									/>
 									<div class="min-w-0 flex-1">
 										<div class="flex items-baseline gap-2">
-											<h class="text-xs font-medium text-secondary">
+											<h class="text-secondary text-xs font-medium">
 												{review.sender.username}
 											</h>
-											<span class="text-xs text-muted">
+											<span class="text-muted text-xs">
 												{new Date(review.timestamp * 1000).toLocaleDateString()}
 											</span>
 										</div>
-										<p class="text-sm font-bold wrap-break-word">
-											{review.comment}
-										</p>
+										<p class="text-sm wrap-break-word">{review.comment}</p>
 									</div>
 									{review.score != null && (
-										<div class="flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5 text-subtle">
+										<div class="text-subtle flex w-6 shrink-0 flex-col items-center gap-0.5 pt-0.5">
 											<Icon name="lucide:chevron-up" class="size-3.5" />
 											<span class="text-xs font-medium">{review.score}</span>
 											<Icon name="lucide:chevron-down" class="size-3.5" />
@@ -99,20 +95,17 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 							id="reviewdb-previous-button"
 							type="button"
 							disabled
-							class="cursor-pointer text-xs font-medium text-muted hover:text-foreground-hover disabled:cursor-not-allowed disabled:opacity-40"
+							class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
 						>
 							Previous
 						</button>
-						<span
-							id="reviewdb-page-indicator"
-							class="text-xs text-muted"
-						>
+						<span id="reviewdb-page-indicator" class="text-muted text-xs">
 							Page 1 of {totalPageCount}
 						</span>
 						<button
 							id="reviewdb-next-button"
 							type="button"
-							class="cursor-pointer text-xs font-medium text-muted hover:text-foreground-hover disabled:cursor-not-allowed disabled:opacity-40"
+							class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
 						>
 							Next
 						</button>

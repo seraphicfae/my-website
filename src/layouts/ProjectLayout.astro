@@ -29,11 +29,10 @@ const {
 
 <Layout title={title} description={description} image={ogImage}>
 	<main class="mx-auto max-w-2xl px-6 py-16">
-		<a
-			href="/projects"
-			class="mb-8 inline-block text-lg hover:underline"
-			>← Projects</a
-		>
+		<a href="/projects" class="mb-8 flex items-center text-lg hover:underline">
+			<Icon name="lucide:arrow-left" /> Projects
+		</a>
+
 		{
 			heroImage && (
 				<div class="mb-8">
@@ -46,48 +45,46 @@ const {
 						class="max-h-100 w-full rounded-xl object-cover"
 					/>
 					{heroImageCredit && (
-						<p class="mt-2 text-right text-xs text-muted">
-							image by{" "}
+						<p class="text-muted mt-2 flex justify-end gap-1 text-right text-xs">
+							<span>image by</span>
 							{heroImageCreditUrl ? (
 								<a
 									href={heroImageCreditUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="underline transition-colors hover:text-foreground-hover"
+									class="hover:text-foreground-hover underline transition-colors"
 								>
 									{heroImageCredit}
 								</a>
 							) : (
-								heroImageCredit
+								<span>{heroImageCredit}</span>
 							)}
 						</p>
 					)}
 				</div>
 			)
 		}
+
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
 		<h2 class="mb-2">{description}</h2>
+
 		<div class="mb-10 flex items-center gap-2">
 			<FormattedDate date={date} />
-			{
-				github && (
-						<Icon name="lucide:dot" />
-						<a
-							href={github}
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-muted transition-colors inline-flex items-center gap-1.5 text-sm hover:text-foreground"
-						>
-							<Icon
-								name="simple-icons:github"
-								class="size-4 text-muted"
-							/>
-							source
-						</a>
-				)
-			}
+			<Icon name="lucide:dot" />
+			<a
+				href={github}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-muted hover:text-foreground inline-flex items-center gap-1.5 text-sm transition-colors"
+			>
+				<Icon name="simple-icons:github" class="text-muted size-4" />
+				source
+			</a>
 		</div>
-		<article class="prose prose-neutral prose-invert max-w-none prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover hover:prose-a:underline">
+
+		<article
+			class="prose prose-neutral prose-invert prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent-hover hover:prose-a:underline max-w-none"
+		>
 			<slot />
 		</article>
 	</main>

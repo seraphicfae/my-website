@@ -15,9 +15,9 @@ const { title, description, date, readTime } = Astro.props;
 
 <Layout title={title} description={description}>
 	<main class="mx-auto max-w-2xl px-6 py-16">
-		<a href="/projects" class="mb-8 inline-block text-lg hover:underline"
-			>← Blog</a
-		>
+		<a href="/blog" class="mb-8 flex items-center text-lg hover:underline">
+			<Icon name="lucide:arrow-left" /> Blog
+		</a>
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
 		<h2 class="mb-2">{description}</h2>
 		<div class="mb-10 flex items-center gap-2">
