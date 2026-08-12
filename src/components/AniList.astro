@@ -1,0 +1,106 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+const ANILIST_USERNAME = "internetkitty";
+
+interface AniListUser {
+	avatar: { medium: string };
+	statistics: {
+		anime: { count: number; episodesWatched: number; minutesWatched: number };
+	};
+}
+
+let user: AniListUser | null = null;
+try {
+	const res = await fetch("https://graphql.anilist.co", {
+		method: "POST",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({
+			query: `
+			query ($name: String) {
+				User(name: $name) {
+					avatar { medium }
+					statistics {
+						anime {
+							count
+							episodesWatched
+							minutesWatched
+						}
+					}
+				}
+			}
+		`,
+			variables: { name: ANILIST_USERNAME },
+		}),
+	});
+	const { data } = await res.json();
+	user = data.User;
+} catch (e) {
+	console.error("Failed fetching AniList at build time:", e);
+}
+
+const stats = user?.statistics.anime ?? null;
+const avatar = user?.avatar ?? null;
+const daysWatched = stats ? (stats.minutesWatched / 60 / 24).toFixed(1) : "0";
+---
+
+<section class="flex flex-col gap-4">
+	<div class="flex items-center gap-2">
+		<Icon name="simple-icons:anilist" class="size-4 shrink-0" />
+		<h2 class="font-black tracking-widest uppercase">anilist</h2>
+	</div>
+
+	{
+		!stats ? (
+			<p class="text-muted text-sm">Nothing to see here</p>
+		) : (
+			<div class="grid grid-cols-3 gap-3">
+				<div class="border-border bg-surface flex flex-col items-center gap-1 rounded-lg border px-3 py-4">
+					<span class="text-accent-secondary text-xl font-black">
+						{stats.count}
+					</span>
+					<span class="text-muted text-center text-xs">Total Anime</span>
+				</div>
+				<div class="border-border bg-surface flex flex-col items-center gap-1 rounded-lg border px-3 py-4">
+					<span class="text-accent-secondary text-xl font-black">
+						{daysWatched}
+					</span>
+					<span class="text-muted text-center text-xs">Days Watched</span>
+				</div>
+				<div class="border-border bg-surface flex flex-col items-center gap-1 rounded-lg border px-3 py-4">
+					<span class="text-accent-secondary text-xl font-black">
+						{stats.episodesWatched}
+					</span>
+					<span class="text-muted text-center text-xs">Episodes</span>
+				</div>
+			</div>
+		)
+	}
+
+	<a
+		href={`https://anilist.co/user/${ANILIST_USERNAME}`}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="group flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase opacity-60 transition-opacity hover:opacity-100"
+	>
+		{
+			avatar && (
+				<Image
+					src={avatar.medium}
+					alt={ANILIST_USERNAME}
+					width={20}
+					height={20}
+					loading="lazy"
+					decoding="async"
+					class="size-5 shrink-0 rounded-full object-cover"
+				/>
+			)
+		}
+		view on anilist
+		<Icon
+			name="lucide:arrow-up-right"
+			class="size-3.5 transition-transform group-hover:rotate-45"
+		/>
+	</a>
+</section>
