@@ -4,7 +4,7 @@ import {
 	LASTFM_USERNAME,
 	fetchRecentTracks,
 	type LastFmTrack,
-} from "../libs/lastfm";
+} from "../lib/lastfm";
 
 let tracks: LastFmTrack[] = [];
 try {
@@ -16,7 +16,7 @@ try {
 
 <section class="flex flex-col gap-4">
 	<div class="flex items-center gap-2">
-		<Icon name="lucide:audio-lines" class="size-4 shrink-0" />
+		<Icon name="simple-icons:lastdotfm" class="size-4 shrink-0" />
 		<h2 class="font-black tracking-widest uppercase">last.fm</h2>
 	</div>
 
@@ -31,14 +31,22 @@ try {
 			)
 		}
 	</ul>
-
 	<a
-		href={`https://www.last.fm/user/${LASTFM_USERNAME}`}
+		href={`https://last.fm/${LASTFM_USERNAME}`}
 		target="_blank"
 		rel="noopener noreferrer"
-		class="group flex items-center justify-center gap-1 text-xs font-bold tracking-widest uppercase opacity-60 transition-opacity hover:opacity-100"
+		class="group flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase opacity-60 transition-opacity hover:opacity-100"
 	>
-		view more
+		<img
+			src="https://lastfm-img.freetls.fastly.net/i/u/avatar170s/1c770caa288ee3c1eca3b542e8c93639.png"
+			alt={LASTFM_USERNAME}
+			width={20}
+			height={20}
+			loading="lazy"
+			decoding="async"
+			class="size-5 shrink-0 rounded-full object-cover"
+		/>
+		view more on Last.FM
 		<Icon
 			name="lucide:arrow-up-right"
 			class="size-3.5 transition-transform group-hover:rotate-45"
@@ -53,7 +61,7 @@ try {
 		isNowPlaying,
 		fetchRecentTracks,
 		type LastFmTrack,
-	} from "../libs/lastfm";
+	} from "../lib/lastfm";
 
 	const listEl = document.getElementById("lastfm-tracks");
 
@@ -84,20 +92,22 @@ try {
 		`;
 	}
 
-	async function refresh(initialTracks?: LastFmTrack[]) {
+	async function refresh() {
 		if (!listEl) return;
 		try {
-			const tracks = initialTracks ?? (await fetchRecentTracks());
+			const tracks = await fetchRecentTracks();
 			if (!tracks.length) return;
 			listEl.innerHTML = tracks.map(renderTrack).join("");
 		} catch (e) {
 			console.error("Failed fetching from Last.fm", e);
 		}
 	}
-	const serverTracks = JSON.parse(listEl?.dataset.initial || "[]");
+
+	const serverTracks: LastFmTrack[] = JSON.parse(
+		listEl?.dataset.initial || "[]",
+	);
 	if (listEl && serverTracks.length) {
 		listEl.innerHTML = serverTracks.map(renderTrack).join("");
 	}
 	refresh();
-	setInterval(() => refresh(), 30000);
 </script>
