@@ -9,10 +9,10 @@ const projects = defineCollection({
 			title: z.string(),
 			description: z.string(),
 			date: z.coerce.date(),
-			github: z.url().optional(),
-			heroImage: image().optional(),
-			heroImageCredit: z.string().optional(),
-			heroImageCreditUrl: z.url().optional(),
+			github: z.url(),
+			heroImage: image(),
+			heroImageCredit: z.string(),
+			heroImageCreditUrl: z.url(),
 		}),
 });
 

@@ -8,10 +8,10 @@ interface Props {
 	title: string;
 	description: string;
 	date: Date;
-	heroImage?: ImageMetadata;
-	heroImageCredit?: string;
-	heroImageCreditUrl?: string;
-	github?: string;
+	heroImage: ImageMetadata;
+	heroImageCredit: string;
+	heroImageCreditUrl: string;
+	github: string;
 	ogImage?: string;
 }
 
@@ -33,37 +33,27 @@ const {
 			<Icon name="lucide:arrow-left" /> Projects
 		</a>
 
-		{
-			heroImage && (
-				<div class="mb-8">
-					<Image
-						src={heroImage}
-						alt={title}
-						loading="eager"
-						width={800}
-						quality={80}
-						class="max-h-100 w-full rounded-xl object-cover"
-					/>
-					{heroImageCredit && (
-						<p class="text-muted mt-2 flex justify-end gap-1 text-right text-xs">
-							<span>image by</span>
-							{heroImageCreditUrl ? (
-								<a
-									href={heroImageCreditUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="hover:text-foreground-hover underline transition-colors"
-								>
-									{heroImageCredit}
-								</a>
-							) : (
-								<span>{heroImageCredit}</span>
-							)}
-						</p>
-					)}
-				</div>
-			)
-		}
+		<div class="mb-8">
+			<Image
+				src={heroImage}
+				alt={title}
+				loading="eager"
+				width={800}
+				quality={80}
+				class="max-h-100 w-full rounded-lg object-cover"
+			/>
+			<p class="text-muted mt-2 flex justify-end gap-1 text-right text-xs">
+				<span>image by</span>
+				<a
+					href={heroImageCreditUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="hover:text-foreground-hover underline transition-colors"
+				>
+					{heroImageCredit}
+				</a>
+			</p>
+		</div>
 
 		<h1 class="mb-2 text-3xl font-medium">{title}</h1>
 		<h2 class="mb-2">{description}</h2>
