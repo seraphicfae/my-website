@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant hover (&:hover, &:active);
 
 @font-face {
 	font-family: "Inter Variable";
