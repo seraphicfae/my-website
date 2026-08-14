@@ -63,8 +63,6 @@ try {
 		type LastFmTrack,
 	} from "../lib/lastfm";
 
-	const listEl = document.getElementById("lastfm-tracks");
-
 	function renderTrack(track: LastFmTrack): string {
 		const nowPlaying = isNowPlaying(track);
 		const art = getImageUrl(track);
@@ -92,8 +90,7 @@ try {
 		`;
 	}
 
-	async function refresh() {
-		if (!listEl) return;
+	async function refresh(listEl: HTMLElement) {
 		try {
 			const tracks = await fetchRecentTracks();
 			if (!tracks.length) return;
@@ -103,11 +100,19 @@ try {
 		}
 	}
 
-	const serverTracks: LastFmTrack[] = JSON.parse(
-		listEl?.dataset.initial || "[]",
-	);
-	if (listEl && serverTracks.length) {
-		listEl.innerHTML = serverTracks.map(renderTrack).join("");
+	function init() {
+		const listEl = document.getElementById("lastfm-tracks");
+		if (!listEl) return;
+
+		const serverTracks: LastFmTrack[] = JSON.parse(
+			listEl.dataset.initial || "[]",
+		);
+		if (serverTracks.length) {
+			listEl.innerHTML = serverTracks.map(renderTrack).join("");
+		}
+		refresh(listEl);
 	}
-	refresh();
+
+	init();
+	document.addEventListener("astro:page-load", init);
 </script>
