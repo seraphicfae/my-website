@@ -88,29 +88,26 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 							))}
 					</div>
 				))}
-
-				{totalPageCount > 1 && (
-					<div class="flex items-center justify-between pt-1">
-						<button
-							id="reviewdb-previous-button"
-							type="button"
-							disabled
-							class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
-						>
-							Previous
-						</button>
-						<span id="reviewdb-page-indicator" class="text-muted text-xs">
-							Page 1 of {totalPageCount}
-						</span>
-						<button
-							id="reviewdb-next-button"
-							type="button"
-							class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
-						>
-							Next
-						</button>
-					</div>
-				)}
+				<div class="flex items-center justify-between pt-1">
+					<button
+						id="previous-button"
+						type="button"
+						disabled
+						class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
+					>
+						Previous
+					</button>
+					<span id="page-indicator" class="text-muted text-xs">
+						Page 1 of {totalPageCount}
+					</span>
+					<button
+						id="next-button"
+						type="button"
+						class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
+					>
+						Next
+					</button>
+				</div>
 			</div>
 		)
 	}
@@ -119,46 +116,36 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 <script>
 	const reviewSection = document.getElementById("reviewdb-section");
 	const previousButton = document.getElementById(
-		"reviewdb-previous-button",
+		"previous-button",
 	) as HTMLButtonElement | null;
 	const nextButton = document.getElementById(
-		"reviewdb-next-button",
+		"next-button",
 	) as HTMLButtonElement | null;
-	const pageIndicatorElement = document.getElementById(
-		"reviewdb-page-indicator",
-	);
+	const pageIndicator = document.getElementById("page-indicator");
 
-	if (reviewSection && previousButton && nextButton && pageIndicatorElement) {
-		const reviewPageElements =
-			reviewSection.querySelectorAll<HTMLElement>(".review-page");
-		const totalPageCount = reviewPageElements.length;
+	if (reviewSection && previousButton && nextButton && pageIndicator) {
+		const prevBtn = previousButton;
+		const nextBtn = nextButton;
+		const indicator = pageIndicator;
+		const pages = reviewSection.querySelectorAll<HTMLElement>(".review-page");
+		const totalPageCount = pages.length;
 		let currentPageIndex = 0;
 
-		function updateVisiblePage(): void {
-			reviewPageElements.forEach((reviewPageElement, pageIndex) => {
-				reviewPageElement.classList.toggle(
-					"hidden",
-					pageIndex !== currentPageIndex,
-				);
-			});
+		function goToPage(delta: number): void {
+			currentPageIndex = Math.min(
+				Math.max(currentPageIndex + delta, 0),
+				totalPageCount - 1,
+			);
 
-			pageIndicatorElement!.textContent = `Page ${currentPageIndex + 1} of ${totalPageCount}`;
-			previousButton!.disabled = currentPageIndex === 0;
-			nextButton!.disabled = currentPageIndex === totalPageCount - 1;
+			pages.forEach((page, i) =>
+				page.classList.toggle("hidden", i !== currentPageIndex),
+			);
+			indicator.textContent = `Page ${currentPageIndex + 1} of ${totalPageCount}`;
+			prevBtn.disabled = currentPageIndex === 0;
+			nextBtn.disabled = currentPageIndex === totalPageCount - 1;
 		}
 
-		previousButton.addEventListener("click", () => {
-			if (currentPageIndex > 0) {
-				currentPageIndex = currentPageIndex - 1;
-				updateVisiblePage();
-			}
-		});
-
-		nextButton.addEventListener("click", () => {
-			if (currentPageIndex < totalPageCount - 1) {
-				currentPageIndex = currentPageIndex + 1;
-				updateVisiblePage();
-			}
-		});
+		prevBtn.addEventListener("click", () => goToPage(-1));
+		nextBtn.addEventListener("click", () => goToPage(1));
 	}
 </script>
