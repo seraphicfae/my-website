@@ -103,6 +103,7 @@ const totalPageCount = Math.ceil(reviews.length / reviewsPerPage);
 					<button
 						id="next-button"
 						type="button"
+						disabled={totalPageCount <= 1}
 						class="text-muted hover:text-foreground-hover cursor-pointer text-xs font-medium disabled:cursor-not-allowed disabled:opacity-40"
 					>
 						Next
